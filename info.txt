@@ -1,0 +1,11 @@
+Cette application vous permet de recevoir des notifications des qu'un panier TooGoodToGo est disponible pres de chez vous, fonctionnalite absente de l'application d'origine.
+
+Pour ce faire, vous devez vous connecter en utilisant votre adresse e-mail.
+Un lien de confirmation vous sera envoye sur votre boite mail.
+Il vous suffit de confirmer en cliquant dessus pour vous connecter a l'application.
+
+Fonctionnalites disponibles:
+- Notifications : Vous recevrez une notification sur votre appareil des qu'un panier est disponible pres de chez vous.
+- Favori Uniquement : Vous ne recevrez des notifications que pour les magasins que vous avez ajoutes a vos favoris dans l'application TooGoodToGo.
+
+Bonne utilisation !

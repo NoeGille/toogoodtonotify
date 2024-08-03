@@ -1,0 +1,178 @@
+#:kivy 1.0.9
+
+# Main page that contains the header, login button, ItemList
+<MainPage>
+    orientation: 'vertical'
+
+    Header:
+        id: header
+        size_hint: 1, 0.2
+    LoginButton:
+        id: login_button
+        size_hint: 1, 0.3
+    ItemList:
+        id: item_list
+    ButtonGrid:
+        id: button_grid
+        size_hint: 1, 0.3
+
+<LoginButton>
+    
+
+# Contains the login screen
+<LoginPage>
+    Header:
+        id: header
+    LoginForm:
+        id: login_form
+
+# Contains the LoginScreen
+<LoginPopUp>
+    title: 'Login'
+    size_hint: 0.8, 0.8
+    auto_dismiss: False
+    BoxLayout:
+        orientation: 'vertical'
+        LoginForm:
+            id: login_form
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            size_hint: 1.0, 0.2
+            Button:
+                text: 'Fermer'
+                on_press:
+                    root.dismiss()
+                
+
+# Contains information to help the user to use the app
+<InfoPopUp>
+    title: 'Info'
+    size_hint: 0.8, 0.8
+    auto_dismiss: False
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: root.get_info()
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            size_hint: 1.0, 0.2
+            Button:
+                text: 'Fermer'
+                on_press: root.dismiss()
+                
+# Cointains a logo and the name of the app
+<Header>
+    canvas.before:
+        Color:
+            rgba: 1,1,1,1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [12]
+    Label:
+        text: 'TooGoodToNotify'
+        color: 0, 0.45, 0, 1
+        font_size: 30
+
+# Contains information about current available items
+<ItemList>
+    orientation: 'vertical'
+    padding: 1
+    spacing: 1
+    
+
+<Item@BoxLayout>
+    orientation: 'horizontal'
+    padding: 1
+    spacing: 1
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [12]
+    Label:
+        id: name
+    Label:
+        id: hour
+    Label:
+        id: price
+
+
+# Contains three buttons, Info, Favorite and Notification
+<ButtonGrid>
+    cols: 3
+    rows: 1
+    padding: 1
+    spacing: 1
+    Button:
+        text: 'Info'
+        on_press: root.info()
+    Button:
+        text: 'Favori Uniquement'
+        on_press: app.flip_favorite_only()
+    Button:
+        text: 'Notification'
+        on_press: app.flip_notification_on()
+
+
+
+<PrettyLabel@Label>
+    font_size: 20
+    color: 0, 0, 0, 1
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [12]
+<PrettyBigButton@Button>
+    font_size: 20
+    color: 0, 0, 0, 1
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [12]
+
+# Contains the login button that redirect to LoginScreen
+<LoginForm>
+    mail: mail.text
+    cols: 1
+    rows: 3
+    padding: 1
+    spacing: 1
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+        padding: 0, 0
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 1
+            spacing: 1
+            size_hint: 0.8, 0.4
+            Label:
+                size_hint: 0.7, 1.0
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                font_size: 20
+                color: 1, 1, 1, 1
+                text: 'Adresse email'
+            TextInput:
+                id: mail
+                multiline: False
+            Button:
+                text: 'se connecter'
+                on_press: app.login(root.mail)
+
+<MailVerificationMessagePopup@Popup>
+    title:'Vérification par e-mail'
+    content: 'Un lien de confirmation vous a été envoyé sur votre boîte mail. Veuillez cliquer dessus pour vous connecter.'
+
+
+    
